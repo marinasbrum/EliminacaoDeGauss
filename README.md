@@ -1,0 +1,2 @@
+# EliminacaoDeGauss
+Eliminação de gauss
