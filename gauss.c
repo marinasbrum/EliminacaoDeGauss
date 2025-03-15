@@ -11,7 +11,6 @@
 #include <unistd.h>
 #include <math.h>
 #include <sys/types.h>
-#include <sys/times.h>
 #include <sys/time.h>
 #include <time.h>
 
@@ -22,9 +21,6 @@ int N;  /* Matrix size */
 /* Matrices and vectors */
 volatile float A[MAXN][MAXN], B[MAXN], X[MAXN];
 /* A * X = B, solve for X */
-
-/* junk */
-#define randm() 4|2[uid]&3
 
 /* Prototype */
 void gauss();  /* The function you will provide.
@@ -44,7 +40,6 @@ unsigned int time_seed() {
 /* Set the program parameters from the command-line arguments */
 void parameters(int argc, char **argv) {
   int seed = 0;  /* Random seed */
-  char uid[32]; /*User name */
 
   /* Read command-line arguments */
   srand(time_seed());  /* Randomize */
@@ -119,9 +114,8 @@ int main(int argc, char **argv) {
   /* Timing variables */
   struct timeval etstart, etstop;  /* Elapsed times using gettimeofday() */
   struct timezone tzdummy;
-  clock_t etstart2, etstop2;  /* Elapsed times using times() */
+  clock_t etstart2, etstop2;  /* Elapsed times using clock() */
   unsigned long long usecstart, usecstop;
-  struct tms cputstart, cputstop;  /* CPU times for my processes */
 
   /* Process program parameters */
   parameters(argc, argv);
@@ -135,14 +129,14 @@ int main(int argc, char **argv) {
   /* Start Clock */
   printf("\nStarting clock.\n");
   gettimeofday(&etstart, &tzdummy);
-  etstart2 = times(&cputstart);
+  etstart2 = clock();
 
   /* Gaussian Elimination */
   gauss();
 
   /* Stop Clock */
   gettimeofday(&etstop, &tzdummy);
-  etstop2 = times(&cputstop);
+  etstop2 = clock();
   printf("Stopped clock.\n");
   usecstart = (unsigned long long)etstart.tv_sec * 1000000 + etstart.tv_usec;
   usecstop = (unsigned long long)etstop.tv_sec * 1000000 + etstop.tv_usec;
@@ -150,25 +144,16 @@ int main(int argc, char **argv) {
   /* Display output */
   print_X();
 
-  /* Display timing results */
-  printf("\nElapsed time = %g ms.\n",
-	 (float)(usecstop - usecstart)/(float)1000);
+   /* Display timing results */
+   printf("\nElapsed time = %g ms.\n",
+    (float)(usecstop - usecstart)/(float)1000);
 
-  printf("(CPU times are accurate to the nearest %g ms)\n",
-	 1.0/(float)CLOCKS_PER_SEC * 1000.0);
-  printf("My total CPU time for parent = %g ms.\n",
-	 (float)( (cputstop.tms_utime + cputstop.tms_stime) -
-		  (cputstart.tms_utime + cputstart.tms_stime) ) /
-	 (float)CLOCKS_PER_SEC * 1000);
-  printf("My system CPU time for parent = %g ms.\n",
-	 (float)(cputstop.tms_stime - cputstart.tms_stime) /
-	 (float)CLOCKS_PER_SEC * 1000);
-  printf("My total CPU time for child processes = %g ms.\n",
-	 (float)( (cputstop.tms_cutime + cputstop.tms_cstime) -
-		  (cputstart.tms_cutime + cputstart.tms_cstime) ) /
-	 (float)CLOCKS_PER_SEC * 1000);
-      /* Contrary to the man pages, this appears not to include the parent */
-  printf("--------------------------------------------\n");
+ printf("(CPU times are accurate to the nearest %g ms)\n",
+    1.0/(float)CLOCKS_PER_SEC * 1000.0);
+ printf("My total CPU time = %g ms.\n", 
+    (float)(etstop2 - etstart2) / CLOCKS_PER_SEC * 1000);
+
+ printf("--------------------------------------------\n");
 
   exit(0);
 }
