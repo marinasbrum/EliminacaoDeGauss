@@ -1,11 +1,3 @@
-/* Gaussian elimination without pivoting.
- * Compile with "gcc gauss.c"
- */
-
-/* ****** ADD YOUR CODE AT THE END OF THIS FILE. ******
- * You need not submit the provided code.
- */
-
  #include <stdio.h>
  #include <stdlib.h>
  #include <unistd.h>
