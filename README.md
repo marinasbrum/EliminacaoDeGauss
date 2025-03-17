@@ -1,4 +1,4 @@
-# EliminacaoDeGauss
+# Eliminação de Gauss
 
 Este repositório contém implementações de um algoritmo de eliminação gaussiana para resolver sistemas de equações lineares, utilizando várias linguagens de programação, como C, Go, Rust, e um script em Python para gerar gráficos dos resultados. O código pode ser utilizado para avaliar o desempenho de cada implementação e comparar a eficiência entre elas.
 
@@ -16,7 +16,7 @@ O código de cada linguagem implementa a solução serialmente e mede o tempo de
 # C
 
 Para rodar o programa em C, use o comando abaixo:
-& .\'gauss.exe' [número de entradas N] [seed opcional]
+      & .\'gauss.exe' [número de entradas N] [seed opcional]
 
 Exemplos:
 
