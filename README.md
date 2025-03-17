@@ -1,6 +1,6 @@
 # Eliminação de Gauss
 
-Este repositório contém implementações de um algoritmo de eliminação gaussiana para resolver sistemas de equações lineares, utilizando várias linguagens de programação, como C, Go, Rust, e um script em Python para gerar gráficos dos resultados. O código pode ser utilizado para avaliar o desempenho de cada implementação e comparar a eficiência entre elas.
+Este repositório contém implementações de um algoritmo de eliminação gaussiana para resolver sistemas de equações lineares, utilizando várias linguagens de programação, como C, Go, Rust, e um script em Python para gerar gráficos dos testes realizados. O código pode ser utilizado para avaliar o desempenho de cada implementação e comparar a eficiência entre elas.
 
 # Integrantes 
 * Marina de Souza Brum
