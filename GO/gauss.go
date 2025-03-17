@@ -57,8 +57,8 @@ func initializeInputs() {
 	for i := range A {
 		A[i] = make([]float64, N)
 	}
-	B = make([]float64, N) 
-	X = make([]float64, N) 
+	B = make([]float64, N)
+	X = make([]float64, N)
 
 	for col := 0; col < N; col++ {
 		for row := 0; row < N; row++ {
@@ -147,7 +147,7 @@ func main() {
 	printX()
 
 	elapsed := time.Since(start)
-	fmt.Printf("\nElapsed time = %g ms.\n", float64(elapsed.Milliseconds()))
+	fmt.Printf("\nElapsed time = %.4f ms.\n", float64(elapsed.Seconds())*1000)
 	fmt.Printf("(CPU times are accurate to the nearest %g ms)\n", float64(time.Second)/float64(time.Millisecond))
 
 	elapsedCPU := time.Since(startCPU)
