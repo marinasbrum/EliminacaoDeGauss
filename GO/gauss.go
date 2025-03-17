@@ -11,9 +11,9 @@ import (
 const MAXN = 2000
 
 var N int
-var A [MAXN][MAXN]float64
-var B [MAXN]float64
-var X [MAXN]float64
+var A [][]float64
+var B []float64
+var X []float64
 
 func timeSeed() uint32 {
 	return uint32(time.Now().UnixNano() % int64(^uint(0)>>1))
@@ -53,6 +53,13 @@ func parameters() {
 
 func initializeInputs() {
 	fmt.Println("\nInitializing...")
+	A = make([][]float64, N)
+	for i := range A {
+		A[i] = make([]float64, N)
+	}
+	B = make([]float64, N) 
+	X = make([]float64, N) 
+
 	for col := 0; col < N; col++ {
 		for row := 0; row < N; row++ {
 			A[row][col] = rand.Float64()
