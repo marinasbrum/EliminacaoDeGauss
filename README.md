@@ -16,7 +16,9 @@ O código de cada linguagem implementa a solução serialmente e mede o tempo de
 # C
 
 Para rodar o programa em C, use o comando abaixo:
-      & .\'gauss.exe' [número de entradas N] [seed opcional]
+```bash
+ & .\'gauss.exe' 
+```
 
 Exemplos:
 
@@ -27,7 +29,9 @@ Exemplos:
 # Go
 
 Para rodar o programa em Go, use o comando abaixo:
-go run gauss.go [número de entradas N] [seed opcional]
+```bash
+go run gauss.go 
+```
 
 Exemplos:
 
@@ -38,7 +42,9 @@ Exemplos:
 # RUST
 
 Para rodar o programa em Rust, use o comando abaixo:
-cargo run [número de entradas N] [seed opcional]
+```bash
+cargo run 
+```
 
 Exemplos:
 
@@ -49,7 +55,9 @@ Exemplos:
 # Python (Para os Gráficos)
 O script em Python é utilizado para gerar gráficos de desempenho. Ele utiliza matplotlib.pyplot e pandas para visualizar o tempo de execução das diferentes implementações. Certifique-se de ter as bibliotecas necessárias instaladas!
 
+```bash
 python grafico.py
+```
 
 # Resultado Esperado
 Cada execução do programa calculará o vetor X e imprimirá o tempo total de execução (em milissegundos) e o tempo de CPU utilizado. A saída também inclui os valores das matrizes A e B se N for pequeno o suficiente (menor que 10).
