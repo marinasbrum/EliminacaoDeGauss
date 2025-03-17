@@ -5,18 +5,16 @@ import pandas as pd
 
 data = {
     'N': [3, 6, 10],
-    'Elapsed Time Go': [0.003, 0.004, 0.001],
-    'CPU Time Go': [0.003, 0.004, 0.002],
+    'Elapsed Time Go': [2.690, 4.828, 1.772],
+    'CPU Time Go': [3.230, 5.363, 1.772],
     'Elapsed Time C': [0.126, 0.113, 0.362],
     'CPU Time C': [0.000, 0.000, 0.000],
     'Elapsed Time Rust': [0.123, 0.214, 0.293],
     'CPU Time Rust': [0.122, 0.214, 0.292]
 }
-
 df = pd.DataFrame(data)
-plt.figure(figsize=(10, 5))
 
-# Gráfico de Elapsed Time
+plt.figure(figsize=(10, 5))
 plt.subplot(1, 2, 1)
 plt.plot(df['N'], df['Elapsed Time Go'], label='Go', marker='o')
 plt.plot(df['N'], df['Elapsed Time C'], label='C', marker='o')
@@ -26,7 +24,6 @@ plt.ylabel('Elapsed Time (ms)')
 plt.title('Elapsed Time Comparison')
 plt.legend()
 
-# Gráfico de CPU Time
 plt.subplot(1, 2, 2)
 plt.plot(df['N'], df['CPU Time Go'], label='Go', marker='o')
 plt.plot(df['N'], df['CPU Time C'], label='C', marker='o')
@@ -42,15 +39,13 @@ plt.show()
 
 data = {
     'Linguagem': ['Go', 'C', 'Rust'],
-    'Elapsed Time': [13.0, 0.197, 0.936],
-    'CPU Time': [14.0, 0.000, 0.000]
+    'Elapsed Time': [3.163, 0.128, 0.110],
+    'CPU Time': [3.688, 0.128, 0.000]
 }
-
 df = pd.DataFrame(data)
 
 plt.figure(figsize=(12, 6))
 indices = range(len(df))
-
 bar_width = 0.50
 plt.subplot(1, 2, 1)
 plt.bar([i - bar_width/2 for i in indices], df['Elapsed Time'], bar_width, label='Elapsed Time', color='blue')
@@ -67,6 +62,5 @@ plt.ylabel('CPU Time (ms)', fontsize=12)
 plt.title('CPU Time Comparison', fontsize=14)
 plt.xticks(indices, df['Linguagem'])  
 plt.legend()
-
 plt.tight_layout()
 plt.show()
