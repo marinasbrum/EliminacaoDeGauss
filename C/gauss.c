@@ -92,7 +92,7 @@ void print_X() {
 int main(int argc, char **argv) {
   struct timeval etstart, etstop;  
   struct timezone tzdummy;
-  struct timespec etstart2, etstop2; 
+  clock_t etstart2, etstop2;
   unsigned long long usecstart, usecstop;
 
   parameters(argc, argv);
@@ -117,13 +117,28 @@ int main(int argc, char **argv) {
 
   print_X();
 
-  printf("\nElapsed time = %g ms.\n",
+  /*printf("\nElapsed time = %g ms.\n",
 	 (float)(usecstop - usecstart)/(float)1000);
   printf("(CPU times are accurate to the nearest %g ms)\n",
 	 1.0/(float)CLOCKS_PER_SEC * 1000.0);
   printf("My total CPU time = %g ms.\n",
        (float)(etstop2 - etstart2) / CLOCKS_PER_SEC * 1000);
-  printf("--------------------------------------------\n");
+  printf("--------------------------------------------\n");*/
+
+  FILE *file = fopen("output.txt", "w");
+    if (file == NULL) {
+        printf("Error opening file.\n");
+        return 1;
+    }
+
+  fprintf(file, "=================================================\n");
+  fprintf(file, "Matrix dimension N = %d\n", N);
+  fprintf(file, "Elapsed time = %.3f ms.\n", (float)(usecstop - usecstart)/(float)1000);
+  fprintf(file, "(CPU times are accurate to the nearest %.3f ms)\n",1.0/(float)CLOCKS_PER_SEC * 1000.0);
+  fprintf(file, "My total CPU time = %.3f ms.\n", (float)(etstop2 - etstart2) / CLOCKS_PER_SEC * 1000);
+  fprintf(file, "=================================================\n");
+  fclose(file);
+
   exit(0);
 }
 
